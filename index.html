@@ -2259,6 +2259,12 @@ animation: confettiBurst 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   renderDots();
   document.getElementById("prevBtn").disabled = true;
 
+  // Start the presentation after the page has loaded. Without this call,
+  // Auto-Next appears enabled but the first slide never starts its timer.
+  window.addEventListener("load", () => {
+    if (autoAdvance) scheduleAutoAdvanceForSlide(currentSlide);
+  });
+
 </script>
 </body>
 </html>
